@@ -208,6 +208,7 @@ phonegapdesktop.internal = {
     
     
     randomException: function(sectionName){
+        console.log('randomException', sectionName, this.debugdata[sectionName]);
         if (sectionName && this.debugdata[sectionName].exceptionThreshold) {
             return (Math.random() < this.debugdata[sectionName].exceptionThreshold);
         }
@@ -750,6 +751,54 @@ MediaError.MEDIA_ERR_DECODE = 3;
 MediaError.MEDIA_ERR_NONE_SUPPORTED = 4;
 
 
+function LocalFileSystem() {
+    this.TEMPORARY = null;
+    this.PERSISTENT = null;
+}
+
+function FileSystem() {
+    this.name = '';
+    this.root = new DirectoryEntry();
+}
+
+function requestFileSystem(storageType, x, successCallback, errorCallback) {
+    console.log('requestFileSystem', phonegapdesktop.internal.randomException("localfilesystem"));
+    if (phonegapdesktop.internal.randomException("localfilesystem")) {
+        errorCallback();
+    } else {
+        successCallback(new FileSystem());
+    }
+}
+
+function DirectoryEntry() {
+    this.isFile = false;
+    this.isDirectory = true;
+    this.name = 'directoryName';
+    this.fullPath = '/fake/directory/full/path';
+    this.filesystem = {};
+}
+
+DirectoryEntry.prototype.getFile = function(path, options, successCallback, errorCallback) {
+
+};
+
+function FileEntry() {
+    this.isFile = true;
+    this.isDirectory = false;
+    this.name = 'fileName';
+    this.fullPath = '/fake/file/full/path';
+    this.filesystem = {};
+}
+
+function FileTransfer() {}
+
+FileTransfer.prototype.download = function(source, target, successCallback, errorCallback) {
+    if (phonegapdesktop.internal.randomException("filetransfer")) {
+        errorCallback();
+    } else {
+        successCallback(new FileEntry());
+    }
+};
 
 navigator.notification = {
 

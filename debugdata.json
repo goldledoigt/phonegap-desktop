@@ -352,6 +352,16 @@
       }
     ]
   },
+  "localfilesystem":{
+    "exceptionThresholdx": 0
+  },
+  "filetransfer":{
+    "exceptionThresholdx": 0
+  },
+  "childbrowser":{
+    "exceptionThresholdx": 0
+  },
+  "ziputil": {"exceptionThresholdx": 0},
   "media":{
     "position":[
       578327,
