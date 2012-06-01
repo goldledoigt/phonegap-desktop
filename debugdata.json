@@ -362,6 +362,7 @@
     "exceptionThresholdx": 0
   },
   "ziputil": {"exceptionThresholdx": 0},
+  "filedownload": {"exceptionThresholdx": 0},
   "media":{
     "position":[
       578327,
