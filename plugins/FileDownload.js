@@ -23,7 +23,7 @@ window.plugins.Download = {
             timer = setInterval(function() {
                 progressCallback.call(this, {
                     status: status,
-                    progress: Math.floor(progress/total)
+                    progress: Math.round(progress/total* Math.pow(10.0, 1))/ Math.pow(10.0, 1)
                 });
                 start++;
                 progress++;
