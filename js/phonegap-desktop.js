@@ -779,8 +779,20 @@ function DirectoryEntry() {
 }
 
 DirectoryEntry.prototype.getFile = function(path, options, successCallback, errorCallback) {
-
+    successCallback(new FileEntry());
 };
+
+function File() {
+    this.name = 'fileName';
+    this.fullPath = '/fake/file/full/path';
+    this.type = 'text/plain';
+    this.lastModifiedDate = new Date();
+    this.size = 0;
+}
+
+function FileWriter() {}
+
+FileWriter.prototype.write = function(data) {};
 
 function FileEntry() {
     this.isFile = true;
@@ -790,6 +802,14 @@ function FileEntry() {
     this.filesystem = {};
 }
 
+FileEntry.prototype.file = function(successCallback, errorCallback) {
+    successCallback(new File());
+};
+
+FileEntry.prototype.createWriter = function(successCallback, errorCallback) {
+    successCallback(new FileWriter());
+};
+
 function FileTransfer() {}
 
 FileTransfer.prototype.download = function(source, target, successCallback, errorCallback) {
@@ -798,6 +818,18 @@ FileTransfer.prototype.download = function(source, target, successCallback, erro
     } else {
         successCallback(new FileEntry());
     }
+};
+
+function FileReader() {
+    this.onloadend = function() {};
+}
+
+FileReader.prototype.readAsText = function(file, encoding) {
+    this.onloadend({
+        target: {
+            result: ''
+        }
+    });
 };
 
 navigator.notification = {

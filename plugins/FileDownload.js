@@ -37,7 +37,7 @@ window.plugins.Download = {
                     clearInterval(timer);
                     setTimeout(successCallback, 1000);
                 }
-            }, 500);
+            }, 100);
         }
     }
 
